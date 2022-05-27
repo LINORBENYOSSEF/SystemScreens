@@ -1,0 +1,32 @@
+<div class="container" dir="rtl">
+    <table class="table table-hover">
+        <thead class="waves-light blue-gradient">
+          <tr>
+            <th *ngFor="let header of headers; let i = index" scope="col" 
+              [ngClass]="{ 'w110': i === headers.length - 1, 'w200': i === headers.length - 2 }">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <td>{{ row.Id }}</td>
+            <td>{{ row.Activity }}</td>
+            <td>{{ row.Base }}</td>
+            <td>{{ row.AirplaneName }}</td>
+            <td>{{ row.AirplaneType }}</td>
+            <td>{{ row.Destination }}</td>
+            <td>{{ row.IsAttributed ? 'כן' : 'לא'}}</td>
+            <td>{{ row.Approvant }}</td>
+            <td>{{ row.Remarks }}</td>
+            <td>
+              <input type="text" class="form-control" (keyup.enter)="attributeToTarget(row.Id);" [(ngModel)]="row.TargetId">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="p-10">
+        <div class="text-center mb-3">
+            <button type="button" mdbBtn gradient="blue" [block]="true" [rounded]="true"
+                class="z-depth-1a waves-light" mdbWavesEffect (click)="logout()">התנתקות</button>
+        </div>
+      </div>
+</div>
